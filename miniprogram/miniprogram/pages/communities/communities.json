@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "社区地图 · 牛马迁移指南",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "nav-header": "/components/nav-header/index"
+  }
+}

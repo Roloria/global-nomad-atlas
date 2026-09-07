@@ -1,0 +1,54 @@
+/* 自定义 tabBar：icon + 文字，颜色随浅/深主题切换（图标 PNG 带 4 配色变体）
+   居中加固：不用 flex gap（旧安卓内核不支持），图标/文字显式块级 + 锁行高 */
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  height: 108rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: #fffdf8;
+  border-top: 1rpx solid #e3e0d5;
+  box-shadow: 0 -1px 2px rgba(23, 32, 44, 0.04);
+}
+
+.tabbar-dark {
+  background: #161b21;
+  border-top-color: #2c3540;
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.tab-item {
+  flex: 1;
+  width: 0; /* flex:1 均分，防内容撑开 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* 水平居中：icon 与文字同一中轴线 */
+  justify-content: center;  /* 垂直居中 */
+  color: #98948a;
+  font-size: 20rpx;
+}
+
+.tab-item.active {
+  color: #c96442;
+  font-weight: 600;
+}
+
+.tabbar-dark .tab-item { color: #74808d; }
+.tabbar-dark .tab-item.active { color: #3bc9db; }
+
+.tab-icon {
+  display: block;
+  width: 46rpx;
+  height: 46rpx;
+  margin-bottom: 6rpx;
+}
+
+.tab-text {
+  display: block;
+  line-height: 1.1;
+  text-align: center;
+}

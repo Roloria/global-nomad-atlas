@@ -1,0 +1,93 @@
+<view class="page {{theme}}">
+  <nav-header theme="{{theme}}" />
+  <view class="container">
+
+    <view class="section-title">全球 <text class="em">{{total}}</text> 个游民社区，位置、月费与政策都已结构化。</view>
+
+    <!-- 统计 -->
+    <scroll-view class="stats-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="stats-row">
+        <view class="stat" wx:for="{{stats}}" wx:key="l">
+          <view class="stat-l">{{item.l}}</view>
+          <view class="stat-v">{{item.v}}</view>
+          <view class="stat-s">{{item.s}}</view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 搜索 -->
+    <view class="controls">
+      <view class="search-wrap">
+        <text class="search-icon">🔍</text>
+        <input class="search" placeholder="搜索社区 / 城市 / 国家" placeholder-class="ph" value="{{search}}" bindinput="onSearch" confirm-type="search" />
+      </view>
+    </view>
+
+    <!-- 区域 chips -->
+    <scroll-view class="tabs-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="tabs-row">
+        <view
+          class="tab {{region === item ? 'active' : ''}}"
+          wx:for="{{regions}}"
+          wx:key="*this"
+          data-region="{{item}}"
+          bindtap="onRegion"
+        >{{item}}</view>
+      </view>
+    </scroll-view>
+
+    <!-- 类型 + 排序 -->
+    <view class="filters">
+      <picker mode="selector" range="{{types}}" value="{{typeIndex}}" bindchange="onTypeChange">
+        <view class="select">{{types[typeIndex]}}<text class="caret">▾</text></view>
+      </picker>
+      <view class="sort-chips">
+        <view
+          class="chip {{sortKey === item.key ? 'active' : ''}}"
+          wx:for="{{sorts}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="onSort"
+        >{{item.label}}</view>
+      </view>
+    </view>
+    <view class="count-row">共 {{list.length}} 个社区 · 小程序内不打开外链，链接可一键复制</view>
+
+    <!-- 社区卡片 -->
+    <view class="comm-list">
+      <view class="comm-card" wx:for="{{list}}" wx:key="rank">
+        <view class="cc-head">
+          <text class="cc-flag">{{item.flag}}</text>
+          <view class="cc-titles">
+            <view class="cc-name">{{item.name}}</view>
+            <view class="cc-name-en">{{item.nameEn}}</view>
+          </view>
+          <view class="cc-score">{{item.scoreText}}</view>
+        </view>
+
+        <view class="cc-meta">
+          <text class="cc-type">{{item.type}}</text>
+          <text class="cc-loc">{{item.city}} · {{item.country}}</text>
+          <text class="pill" style="color:{{item.regionColor}};background:{{item.regionBg}};">{{item.region}}</text>
+        </view>
+
+        <view class="cc-intro">{{item.intro}}</view>
+
+        <view class="cc-fields">
+          <view class="cc-field"><text class="cf-l">月费</text><text class="cf-v">{{item.price}}</text></view>
+          <view class="cc-field"><text class="cf-l">容量</text><text class="cf-v">{{item.capacityText}} 人</text></view>
+          <view class="cc-field"><text class="cf-l">政策</text><text class="cf-v">{{item.policy}}</text></view>
+        </view>
+
+        <view class="cc-links">
+          <view class="cc-link {{item.hasUrl ? '' : 'disabled'}}" data-kind="url" data-rank="{{item.rank}}" bindtap="onCopy">🌐 复制官网</view>
+          <view class="cc-link {{item.hasEmail ? '' : 'disabled'}}" data-kind="email" data-rank="{{item.rank}}" bindtap="onCopy">✉️ 复制邮箱</view>
+          <view class="cc-link {{item.hasSocial ? '' : 'disabled'}}" data-kind="social" data-rank="{{item.rank}}" bindtap="onCopy">💬 复制社群</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty" wx:if="{{!list.length}}">没有匹配的社区</view>
+
+  </view>
+</view>

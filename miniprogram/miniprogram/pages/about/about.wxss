@@ -1,0 +1,104 @@
+/* 共建页样式 */
+
+/* 顶部标语（自城市榜移入） */
+.hero { padding: 20rpx 4rpx 8rpx; }
+.hero-slogan {
+  font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
+  font-size: 48rpx; font-weight: 700; line-height: 1.3;
+  margin: 8rpx 0 16rpx;
+}
+.hero-sub { font-size: 25rpx; color: var(--text-2); line-height: 1.7; }
+
+/* 外观设置 */
+.theme-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--card); border: 1rpx solid var(--border);
+  border-radius: 16rpx; padding: 22rpx 26rpx;
+}
+.theme-label { font-size: 26rpx; color: var(--text); }
+
+.section { margin-top: 56rpx; }
+.section-title {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-weight: 700; font-size: 34rpx; line-height: 1.35;
+  margin: 12rpx 0 24rpx;
+}
+
+/* 三大支柱 */
+.pillar { border-top: 1rpx solid var(--text); padding: 22rpx 0 30rpx; }
+.pillar-no {
+  font-family: Georgia, serif; font-style: italic;
+  font-size: 52rpx; color: var(--accent); line-height: 1;
+  margin-bottom: 12rpx;
+}
+.pillar-title { font-size: 30rpx; font-weight: 700; margin-bottom: 10rpx; }
+.pillar-text { font-size: 25rpx; color: var(--text-2); line-height: 1.7; }
+
+/* 方法论 */
+.dim-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14rpx; margin-bottom: 20rpx; }
+.dim-item { background: var(--bg-2); border-radius: 14rpx; padding: 16rpx 18rpx; }
+.dim-label { font-size: 23rpx; font-weight: 600; }
+.dim-weight { font-weight: 400; color: var(--text-3); font-size: 20rpx; margin-left: 6rpx; }
+.dim-help { font-size: 20rpx; color: var(--text-3); margin-top: 4rpx; }
+
+.formula {
+  background: var(--accent-soft);
+  border-radius: 14rpx;
+  padding: 18rpx 20rpx;
+}
+.formula-title { font-size: 24rpx; font-weight: 700; }
+.formula-body {
+  font-family: Menlo, Consolas, monospace;
+  font-size: 20rpx; line-height: 1.7; color: var(--text-2);
+  margin-top: 8rpx;
+}
+
+/* 流水线 */
+.step { border-top: 1rpx solid var(--border-strong); padding: 20rpx 0; }
+.step-no {
+  font-family: Menlo, Consolas, monospace;
+  font-size: 20rpx; letter-spacing: 0.18em;
+  color: var(--gold);
+}
+.step-title {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-size: 30rpx; font-weight: 700; margin: 8rpx 0 6rpx;
+}
+.step-text { font-size: 24rpx; color: var(--text-2); }
+.pipeline {
+  margin-top: 22rpx;
+  border: 1rpx dashed var(--border-strong);
+  border-radius: 16rpx;
+  padding: 18rpx 22rpx;
+  font-family: Menlo, Consolas, monospace;
+  font-size: 21rpx;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* FAQ */
+.faq-item { border-bottom: 1rpx solid var(--border); }
+.faq-q { display: flex; align-items: center; gap: 16rpx; padding: 24rpx 4rpx; }
+.faq-qno { font-family: Menlo, Consolas, monospace; font-size: 21rpx; color: var(--accent); flex-shrink: 0; }
+.faq-qtext { font-size: 27rpx; font-weight: 600; flex: 1; }
+.faq-plus { color: var(--text-3); font-size: 30rpx; transition: transform 0.2s; flex-shrink: 0; }
+.faq-plus.open { transform: rotate(45deg); color: var(--accent); }
+.faq-a { padding: 0 8rpx 26rpx 56rpx; font-size: 24rpx; color: var(--text-2); line-height: 1.7; }
+
+/* 行动区 */
+.cta-list { display: flex; flex-direction: column; gap: 16rpx; }
+.flow-note { margin-top: 20rpx; font-size: 21rpx; color: var(--text-3); line-height: 1.7; }
+
+/* 页脚 */
+.about-foot {
+  margin-top: 72rpx;
+  border-top: 1rpx solid var(--border-strong);
+  padding: 40rpx 0 20rpx;
+}
+.about-foot-brand { font-weight: 700; font-size: 26rpx; }
+.about-foot-text { font-size: 22rpx; color: var(--text-3); margin-top: 10rpx; line-height: 1.7; }
+.about-foot-meta {
+  font-family: Menlo, Consolas, monospace;
+  font-size: 19rpx; letter-spacing: 0.08em;
+  color: var(--text-3); margin-top: 16rpx;
+}

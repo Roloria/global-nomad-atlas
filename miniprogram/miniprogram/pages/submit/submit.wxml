@@ -1,0 +1,89 @@
+<view class="page {{theme}}">
+  <view class="container">
+
+    <view class="masthead">
+      <view class="kicker">SUBMIT</view>
+      <view class="page-title">提交城市评分</view>
+      <view class="tagline">拖动滑杆为 12 个维度打分，综合分自动计算；数据先存本机，复制 Issue 文本即可进入公开审核。</view>
+    </view>
+
+    <!-- 表单 -->
+    <view class="form-card">
+      <view class="form-row">
+        <text class="form-label">城市 *</text>
+        <input class="form-input" placeholder="如：清迈" placeholder-class="ph" value="{{city}}" bindinput="onCity" />
+      </view>
+      <view class="form-row">
+        <text class="form-label">国家 / 地区 *</text>
+        <input class="form-input" placeholder="如：泰国" placeholder-class="ph" value="{{country}}" bindinput="onCountry" />
+      </view>
+      <view class="form-row">
+        <text class="form-label">区域</text>
+        <picker mode="selector" range="{{regions}}" value="{{regionIndex}}" bindchange="onRegion">
+          <view class="form-input picker">{{regions[regionIndex]}}<text class="caret">▾</text></view>
+        </picker>
+      </view>
+      <view class="form-row col">
+        <text class="form-label">住后体验 / 描述</text>
+        <textarea class="form-textarea" placeholder="网速、房租、社群、安全等真实感受" placeholder-class="ph" value="{{description}}" bindinput="onDescription" maxlength="500" />
+      </view>
+      <view class="form-row col">
+        <text class="form-label">数据来源（选填）</text>
+        <input class="form-input" placeholder="如：numbeo.com / 亲测" placeholder-class="ph" value="{{sources}}" bindinput="onSources" />
+      </view>
+    </view>
+
+    <!-- 12 维滑杆 -->
+    <view class="form-card">
+      <view class="form-card-title">维度评分（0–10 分）</view>
+      <view class="slider-row" wx:for="{{formDims}}" wx:key="key">
+        <view class="slider-head">
+          <text class="slider-label">{{item.label}}</text>
+          <text class="slider-help">{{item.help}}</text>
+          <text class="slider-val {{item.cls}}">{{item.value}}</text>
+        </view>
+        <slider
+          min="0" max="10" step="0.5" value="{{item.value}}"
+          activeColor="#c96442" backgroundColor="#e3e0d5" block-size="20"
+          data-idx="{{index}}" bindchange="onSlider" bindchanging="onSlider"
+        />
+      </view>
+      <view class="overall-row">
+        <text class="overall-label">综合分（自动）</text>
+        <text class="overall-value">{{overall}}</text>
+      </view>
+    </view>
+
+    <!-- 操作 -->
+    <view class="cta-list">
+      <view class="btn btn-block" bindtap="onSubmit">💾 保存到本机</view>
+    </view>
+
+    <!-- 成功卡片 -->
+    <view class="success-card" wx:if="{{submitted}}">
+      <view class="success-title">✅ 已保存第 {{savedCount}} 条提交</view>
+      <view class="success-body">
+        「{{submitted.city}} · {{submitted.country}}」综合分 <text class="success-score">{{submitted.overall}}</text>。
+        想让数据进入公开榜单？复制 Issue 文本，到 GitHub 仓库新建工单即可进入人工审核。
+      </view>
+      <view class="cta-list">
+        <view class="btn btn-block" bindtap="onCopyIssue">📤 复制 GitHub Issue 文本</view>
+        <view class="btn btn-secondary btn-block" bindtap="onAnother">➕ 再提交一条</view>
+      </view>
+    </view>
+
+    <!-- 我的提交 -->
+    <view class="saved-section" wx:if="{{savedCount > 0}}">
+      <view class="kicker">我的提交（{{savedCount}}）</view>
+      <view class="saved-item" wx:for="{{savedList}}" wx:key="idx">
+        <view class="saved-main">
+          <text class="saved-city">{{item.city}} · {{item.country}}</text>
+          <text class="saved-meta">{{item.region}} · 综合 {{item.overall}} · {{item.time}}</text>
+        </view>
+        <view class="saved-del" data-idx="{{item.idx}}" bindtap="onDeleteSaved">删除</view>
+      </view>
+      <view class="flow-note">💡 记录仅存于本机。稍后接入云开发后，可一键上传进入公开审核流程。</view>
+    </view>
+
+  </view>
+</view>

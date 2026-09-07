@@ -1,0 +1,133 @@
+<view class="page {{theme}}">
+  <nav-header theme="{{theme}}" />
+  <view class="container">
+
+    <!-- 统计 -->
+    <scroll-view class="stats-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="stats-row">
+        <view class="stat" wx:for="{{stats}}" wx:key="l">
+          <view class="stat-l">{{item.l}}</view>
+          <view class="stat-v">{{item.v}}</view>
+          <view class="stat-s">{{item.s}}</view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 搜索 + 货币 -->
+    <view class="controls">
+      <view class="search-wrap">
+        <text class="search-icon">🔍</text>
+        <input class="search" placeholder="搜索城市 / 国家" placeholder-class="ph" value="{{search}}" bindinput="onSearch" confirm-type="search" />
+      </view>
+      <view class="currency-toggle">
+        <view class="seg {{currency === 'USD' ? 'active' : ''}}" bindtap="onCurrencyUSD">$ USD</view>
+        <view class="seg {{currency === 'CNY' ? 'active' : ''}}" bindtap="onCurrencyCNY">¥ CNY</view>
+      </view>
+    </view>
+    <view class="rate-row" bindtap="onEditRate">汇率 1 USD ≈ <b>{{rateText}}</b> CNY · 点按可修改</view>
+
+    <!-- 区域 tabs -->
+    <scroll-view class="tabs-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="tabs-row">
+        <view
+          class="tab {{region === item ? 'active' : ''}}"
+          wx:for="{{regions}}"
+          wx:key="*this"
+          data-region="{{item}}"
+          bindtap="onRegion"
+        >{{item}}</view>
+      </view>
+    </scroll-view>
+
+    <!-- 筛选与排序 -->
+    <view class="filters">
+      <picker mode="selector" range="{{countryOptions}}" value="{{countryIndex}}" bindchange="onCountryChange">
+        <view class="select">{{countryOptions[countryIndex]}}<text class="caret">▾</text></view>
+      </picker>
+      <picker mode="selector" range="{{topOptions}}" value="{{topIndex}}" bindchange="onTopChange">
+        <view class="select">{{topOptions[topIndex]}}<text class="caret">▾</text></view>
+      </picker>
+    </view>
+    <view class="filters">
+      <view class="sort-chips">
+        <view
+          class="chip {{sortKey === item.key ? 'active' : ''}}"
+          wx:for="{{sorts}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="onSort"
+        >{{item.label}}{{sortKey === item.key ? (sortDir > 0 ? ' ↑' : ' ↓') : ' ↕'}}</view>
+      </view>
+    </view>
+    <view class="count-row">共 {{list.length}} 座城市 · 点按卡片展开 12 维明细</view>
+
+    <!-- 城市卡片列表 -->
+    <view class="city-list">
+      <view
+        class="city-card {{expandedRank === item.rank ? 'expanded' : ''}}"
+        wx:for="{{list}}"
+        wx:key="rank"
+        data-rank="{{item.rank}}"
+        bindtap="onToggle"
+      >
+        <view class="row-main">
+          <view class="rank">{{item.rankNo}}</view>
+          <view class="city-cell">
+            <text class="city-flag">{{item.flag}}</text>
+            <view class="city-names">
+              <view class="city-name">{{item.name}}</view>
+              <view class="city-sub">
+                <text class="city-country">{{item.country}}</text>
+                <text class="pill" style="color:{{item.regionColor}};background:{{item.regionBg}};">{{item.region}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="city-right">
+            <view class="score">{{item.score}}</view>
+            <view class="score-label">综合分</view>
+          </view>
+        </view>
+
+        <view class="row-meta">
+          <text class="meta-item">👥 {{item.nomadsText}} 游民</text>
+          <text class="meta-item {{item.costCls}}">💰 {{item.costText}}/月</text>
+        </view>
+        <view class="quick-dots">
+          <view class="qdot" wx:for="{{item.keyDots}}" wx:for-item="d" wx:key="label">
+            <view class="dot {{d.cls}}"></view>
+            <text class="qdot-label">{{d.label}}</text>
+            <text class="qdot-value {{d.cls}}">{{d.value}}</text>
+          </view>
+          <view class="qdot-more">{{expandedRank === item.rank ? '收起 ▲' : '12 维明细 ▼'}}</view>
+        </view>
+
+        <!-- 展开详情 -->
+        <view class="detail" wx:if="{{expandedRank === item.rank}}" catchtap="noop">
+          <view class="detail-meta">
+            <view class="dm"><text class="dm-l">月成本</text><text class="dm-v">{{item.costDual}}</text></view>
+            <view class="dm"><text class="dm-l">游民数</text><text class="dm-v">{{item.nomadsText}} 人</text></view>
+            <view class="dm"><text class="dm-l">年均气温</text><text class="dm-v">{{item.temp}}°C</text></view>
+            <view class="dm"><text class="dm-l">最佳季节</text><text class="dm-v">{{item.season}}</text></view>
+            <view class="dm"><text class="dm-l">签证</text><text class="dm-v">{{item.visa}}</text></view>
+            <view class="dm"><text class="dm-l">最后更新</text><text class="dm-v">{{item.updated}}</text></view>
+          </view>
+          <view class="dim-grid">
+            <view class="metric" wx:for="{{item.dims}}" wx:for-item="f" wx:key="key">
+              <view class="metric-head">
+                <view class="dot {{f.cls}}"></view>
+                <text class="metric-label">{{f.label}}</text>
+                <text class="metric-val {{f.cls}}">{{f.value}}</text>
+                <text class="metric-tier">/ {{f.tierWord}}</text>
+              </view>
+              <view class="metric-help">{{f.help}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty" wx:if="{{!list.length}}">没有匹配的城市</view>
+    <view class="freshness" wx:if="{{freshness}}">{{freshness}}</view>
+
+  </view>
+</view>

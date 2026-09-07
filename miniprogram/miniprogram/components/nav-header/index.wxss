@@ -1,0 +1,27 @@
+/* 自定义导航：背景跟随页面主题（CSS 变量自 .page 继承） */
+.nav-header {
+  background: var(--bg);
+}
+
+.nav-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16rpx;
+  height: 92rpx;
+  padding: 0 28rpx;
+}
+
+.nav-logo {
+  display: block;
+  width: 64rpx;
+  height: 64rpx;
+  flex-shrink: 0;
+}
+
+.nav-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}

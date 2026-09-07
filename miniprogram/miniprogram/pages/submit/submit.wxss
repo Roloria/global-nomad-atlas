@@ -1,0 +1,98 @@
+/* 提交数据页样式 */
+
+.ph { color: var(--text-3); }
+
+.form-card {
+  background: var(--card);
+  border: 1rpx solid var(--border);
+  border-radius: 20rpx;
+  padding: 26rpx 26rpx 16rpx;
+  box-shadow: var(--shadow-sm);
+  margin-top: 28rpx;
+}
+
+.form-card-title { font-size: 27rpx; font-weight: 700; margin-bottom: 6rpx; }
+
+.form-row { display: flex; align-items: center; gap: 18rpx; padding: 18rpx 0; border-bottom: 1rpx solid var(--border); }
+.form-row.col { flex-direction: column; align-items: stretch; gap: 12rpx; }
+.form-row:last-child { border-bottom: none; }
+.form-label { width: 170rpx; font-size: 24rpx; color: var(--text-2); flex-shrink: 0; }
+.form-row.col .form-label { width: auto; }
+
+.form-input {
+  flex: 1; font-size: 26rpx; color: var(--text);
+  min-height: 56rpx;
+}
+.form-row picker { flex: 1; display: flex; }
+.form-input.picker { display: flex; align-items: center; }
+.form-input .caret { margin-left: auto; font-size: 20rpx; color: var(--text-3); }
+
+.form-textarea {
+  width: 100%; min-height: 160rpx;
+  font-size: 26rpx; color: var(--text); line-height: 1.6;
+  background: var(--bg-2); border-radius: 14rpx; padding: 16rpx;
+  box-sizing: border-box;
+}
+
+/* 滑杆 */
+.slider-row { padding: 16rpx 0 4rpx; border-bottom: 1rpx solid var(--border); }
+.slider-row:last-of-type { border-bottom: none; }
+.slider-head { display: flex; align-items: center; gap: 12rpx; margin-bottom: 2rpx; }
+.slider-label { font-size: 24rpx; font-weight: 600; flex-shrink: 0; }
+.slider-help {
+  font-size: 19rpx; color: var(--text-3); flex: 1;
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.slider-val {
+  font-size: 26rpx; font-weight: 700; flex-shrink: 0;
+  min-width: 72rpx; text-align: center;
+  border-radius: 10rpx; padding: 2rpx 10rpx;
+  background: var(--bg-2);
+}
+.slider-val.g { color: var(--good); background: rgba(47, 158, 68, 0.16); }
+.slider-val.m { color: var(--mid); background: rgba(232, 137, 12, 0.16); }
+.slider-val.b { color: var(--bad); background: rgba(224, 49, 49, 0.16); }
+
+.overall-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 18rpx; padding: 18rpx 22rpx;
+  background: var(--accent-soft); border-radius: 14rpx;
+}
+.overall-label { font-size: 24rpx; font-weight: 600; }
+.overall-value {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-size: 44rpx; font-weight: 700; color: var(--accent); line-height: 1;
+}
+
+.cta-list { display: flex; flex-direction: column; gap: 16rpx; margin-top: 28rpx; }
+
+/* 成功卡片 */
+.success-card {
+  margin-top: 28rpx;
+  background: var(--card);
+  border: 1rpx solid var(--good);
+  border-radius: 20rpx;
+  padding: 26rpx;
+}
+.success-title { font-size: 28rpx; font-weight: 700; }
+.success-body { font-size: 24rpx; color: var(--text-2); line-height: 1.7; margin: 12rpx 0 6rpx; }
+.success-score { color: var(--accent); font-weight: 700; font-size: 28rpx; }
+
+/* 我的提交 */
+.saved-section { margin-top: 48rpx; }
+.saved-item {
+  display: flex; align-items: center; gap: 16rpx;
+  background: var(--card); border: 1rpx solid var(--border);
+  border-radius: 16rpx; padding: 20rpx 22rpx;
+  margin-top: 14rpx;
+}
+.saved-main { flex: 1; min-width: 0; }
+.saved-city { display: block; font-size: 26rpx; font-weight: 600; }
+.saved-meta { display: block; font-size: 21rpx; color: var(--text-3); margin-top: 4rpx; }
+.saved-del {
+  flex-shrink: 0; font-size: 22rpx; color: var(--bad);
+  border: 1rpx solid var(--bad); border-radius: 999rpx;
+  padding: 6rpx 20rpx;
+}
+
+.flow-note { margin-top: 20rpx; font-size: 21rpx; color: var(--text-3); line-height: 1.7; }

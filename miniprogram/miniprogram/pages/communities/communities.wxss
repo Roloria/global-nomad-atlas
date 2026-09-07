@@ -1,0 +1,58 @@
+/* 社区地图页样式 */
+
+.section-title {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-weight: 700; font-size: 32rpx; line-height: 1.4;
+  padding: 20rpx 4rpx 0;
+}
+
+.ph { color: var(--text-3); }
+
+.comm-list { display: flex; flex-direction: column; gap: 18rpx; margin-top: 6rpx; }
+
+.comm-card {
+  background: var(--card);
+  border: 1rpx solid var(--border);
+  border-left: 6rpx solid var(--accent);
+  border-radius: 20rpx;
+  padding: 24rpx;
+  box-shadow: var(--shadow-sm);
+}
+
+.cc-head { display: flex; align-items: flex-start; gap: 16rpx; }
+.cc-flag { font-size: 46rpx; line-height: 1.1; flex-shrink: 0; }
+.cc-titles { flex: 1; min-width: 0; }
+.cc-name { font-weight: 700; font-size: 30rpx; }
+.cc-name-en { font-size: 21rpx; color: var(--text-3); margin-top: 2rpx; }
+.cc-score {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-weight: 700; font-size: 40rpx; line-height: 1;
+  color: var(--accent); flex-shrink: 0;
+}
+
+.cc-meta { display: flex; align-items: center; gap: 12rpx; flex-wrap: wrap; margin: 14rpx 0 10rpx; }
+.cc-type {
+  font-size: 20rpx; font-weight: 600;
+  color: var(--accent); background: var(--accent-soft);
+  padding: 2rpx 12rpx; border-radius: 999rpx;
+}
+.cc-loc { font-size: 22rpx; color: var(--text-2); }
+
+.cc-intro { font-size: 24rpx; color: var(--text-2); line-height: 1.6; }
+
+.cc-fields { margin: 14rpx 0 4rpx; display: flex; flex-direction: column; gap: 8rpx; }
+.cc-field { display: flex; gap: 14rpx; font-size: 22rpx; }
+.cf-l { color: var(--text-3); flex-shrink: 0; width: 64rpx; }
+.cf-v { color: var(--text-2); flex: 1; }
+
+.cc-links { display: flex; gap: 14rpx; margin-top: 16rpx; border-top: 1rpx dashed var(--border); padding-top: 16rpx; }
+.cc-link {
+  flex: 1;
+  text-align: center;
+  font-size: 22rpx; font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 12rpx;
+  padding: 12rpx 0;
+}
+.cc-link.disabled { color: var(--text-3); background: var(--bg-2); }

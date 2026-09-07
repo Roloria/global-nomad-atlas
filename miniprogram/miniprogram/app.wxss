@@ -1,0 +1,214 @@
+/**
+ * 牛马迁移指南 · 全局样式
+ * 设计令牌与榜单网站（docs/index.html）同源：
+ * 浅色 = 官网暖调（Nomadic Cartography），深色 = 原版冷色。
+ */
+
+/* ---------- 设计令牌 ---------- */
+.page {
+  --bg: #faf9f5;
+  --bg-2: #f0eee6;
+  --card: #fffdf8;
+  --border: #e3e0d5;
+  --border-strong: #cfcbbd;
+  --text: #141413;
+  --text-2: #57544b;
+  --text-3: #98948a;
+  --accent: #c96442;
+  --accent-hover: #a94f30;
+  --accent-soft: rgba(201, 100, 66, 0.10);
+  --on-accent: #fff8f0;
+  --ink: #1f1e1d;
+  --on-ink: #faf9f5;
+  --gold: #e8b04b;
+  --good: #2f9e44;
+  --mid: #e8890c;
+  --bad: #e03131;
+  --shadow-sm: 0 1px 2px rgba(23, 32, 44, 0.06);
+  --shadow-md: 0 10px 28px rgba(23, 32, 44, 0.12);
+
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 28rpx;
+  line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+
+.page.dark {
+  --bg: #0f1216;
+  --bg-2: #161b21;
+  --card: #1b222a;
+  --border: #2c3540;
+  --border-strong: #3d4854;
+  --text: #eef2f6;
+  --text-2: #aeb8c2;
+  --text-3: #74808d;
+  --accent: #3bc9db;
+  --accent-hover: #5dd3e3;
+  --accent-soft: rgba(59, 201, 219, 0.13);
+  --on-accent: #082026;
+  --ink: #e8edf2;
+  --on-ink: #12181d;
+  --gold: #e8b04b;
+  --good: #51cf66;
+  --mid: #ffa94d;
+  --bad: #ff6b6b;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- 通用布局 ---------- */
+.container {
+  padding: 24rpx 28rpx;
+  padding-bottom: 200rpx; /* 给自定义 tabBar 留出空间 */
+}
+
+/* masthead */
+.masthead { padding: 16rpx 4rpx 8rpx; }
+.masthead-top { display: flex; align-items: center; gap: 14rpx; }
+.logo-mark {
+  display: block;
+  width: 64rpx;
+  height: 64rpx;
+  flex-shrink: 0;
+}
+.brand-name { font-weight: 700; font-size: 28rpx; letter-spacing: 0.02em; }
+.masthead-meta { margin-left: auto; font-size: 22rpx; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.theme-toggle {
+  width: 64rpx; height: 64rpx; border-radius: 50%;
+  border: 1rpx solid var(--border-strong);
+  background: var(--card); color: var(--text-2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30rpx; margin-left: auto; flex-shrink: 0;
+}
+.page-title {
+  font-family: Georgia, "Noto Serif SC", "Songti SC", "STSong", serif;
+  font-size: 52rpx; font-weight: 700; line-height: 1.28;
+  margin: 28rpx 0 12rpx;
+}
+.page-title .em { color: var(--accent); }
+.tagline { font-size: 26rpx; color: var(--text-2); }
+.kicker {
+  font-size: 20rpx; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600; margin-bottom: 10rpx;
+}
+
+/* stats 卡片（横向滚动） */
+.stats-scroll { width: 100%; margin: 28rpx 0 8rpx; }
+.stats-row { display: flex; gap: 16rpx; padding: 4rpx 2rpx; }
+.stat {
+  position: relative; flex-shrink: 0;
+  width: 240rpx;
+  background: var(--card); border: 1rpx solid var(--border);
+  border-radius: 18rpx; padding: 22rpx 22rpx 18rpx;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.stat::before {
+  content: ""; position: absolute; top: 0; left: 26rpx;
+  width: 34rpx; height: 6rpx; border-radius: 0 0 4rpx 4rpx;
+  background: var(--accent);
+}
+.stat-l { font-size: 20rpx; color: var(--text-3); font-weight: 600; }
+.stat-v {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-size: 42rpx; font-weight: 700; margin-top: 8rpx;
+  font-variant-numeric: tabular-nums;
+}
+.stat-s { font-size: 21rpx; color: var(--text-3); margin-top: 4rpx; }
+
+/* 搜索 + 货币 */
+.controls { display: flex; gap: 16rpx; align-items: center; margin: 20rpx 0 12rpx; }
+.search-wrap {
+  flex: 1; display: flex; align-items: center; gap: 12rpx;
+  background: var(--card); border: 1rpx solid var(--border);
+  border-radius: 16rpx; padding: 0 22rpx; height: 72rpx;
+}
+.search-icon { font-size: 24rpx; opacity: 0.7; }
+.search-wrap input { flex: 1; font-size: 26rpx; color: var(--text); height: 100%; }
+.currency-toggle {
+  display: flex; align-items: center; gap: 6rpx;
+  padding: 8rpx; background: var(--card); border: 1rpx solid var(--border);
+  border-radius: 999rpx; flex-shrink: 0;
+}
+.currency-toggle .seg {
+  padding: 8rpx 18rpx; border-radius: 999rpx;
+  font-size: 22rpx; font-weight: 500; color: var(--text-2);
+}
+.currency-toggle .seg.active { background: var(--ink); color: var(--on-ink); font-weight: 600; }
+.rate-row { font-size: 21rpx; color: var(--text-3); padding: 4rpx 6rpx 12rpx; }
+.rate-row b { color: var(--text-2); font-weight: 600; }
+
+/* tabs（区域 chips） */
+.tabs-scroll { width: 100%; margin: 6rpx 0 14rpx; }
+.tabs-row { display: flex; gap: 12rpx; padding: 4rpx 2rpx; }
+.tab {
+  flex-shrink: 0; padding: 12rpx 24rpx; border-radius: 14rpx;
+  background: var(--card); border: 1rpx solid var(--border);
+  font-size: 24rpx; color: var(--text-2);
+}
+.tab.active {
+  background: var(--accent-soft); color: var(--accent);
+  border-color: var(--accent); font-weight: 600;
+}
+
+/* filters */
+.filters { display: flex; gap: 14rpx; align-items: center; flex-wrap: wrap; margin-bottom: 14rpx; }
+.select {
+  padding: 12rpx 20rpx; border-radius: 14rpx;
+  background: var(--card); border: 1rpx solid var(--border);
+  font-size: 24rpx; color: var(--text-2);
+}
+.select .caret { font-size: 18rpx; opacity: 0.6; margin-left: 6rpx; }
+.sort-chips { display: flex; gap: 10rpx; flex-wrap: wrap; }
+.chip {
+  padding: 10rpx 18rpx; border-radius: 999rpx;
+  border: 1rpx solid var(--border); background: var(--card);
+  font-size: 22rpx; color: var(--text-2);
+}
+.chip.active { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.count-row { font-size: 22rpx; color: var(--text-3); margin: 6rpx 4rpx 14rpx; }
+
+/* 空状态 / 脚注 */
+.empty {
+  text-align: center; color: var(--text-3); font-size: 26rpx;
+  padding: 120rpx 0;
+}
+.freshness { text-align: center; color: var(--text-3); font-size: 21rpx; padding: 30rpx 0 6rpx; }
+.freshness b { color: var(--text-2); }
+
+/* ---------- 评分圆点 / tier ---------- */
+.dot { width: 13rpx; height: 13rpx; border-radius: 5rpx; flex-shrink: 0; }
+.dot.g { background: var(--good); }
+.dot.m { background: var(--mid); }
+.dot.b { background: var(--bad); }
+.tg { color: var(--good); }
+.tm { color: var(--mid); }
+.tb { color: var(--bad); }
+
+/* ---------- 区域 pill ---------- */
+.pill {
+  display: inline-flex; align-items: center;
+  font-size: 19rpx; font-weight: 600;
+  padding: 2rpx 12rpx; border-radius: 999rpx;
+  line-height: 1.5;
+}
+
+/* ---------- 通用按钮 ---------- */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8rpx;
+  padding: 20rpx 32rpx; border-radius: 16rpx;
+  background: var(--accent); color: var(--on-accent);
+  font-size: 27rpx; font-weight: 600;
+}
+.btn-secondary {
+  background: var(--card); color: var(--text-2);
+  border: 1rpx solid var(--border-strong);
+}
+.btn-ghost {
+  background: transparent; color: var(--accent);
+  border: 1rpx solid var(--accent);
+}
+.btn-block { width: 100%; }

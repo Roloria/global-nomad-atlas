@@ -1,0 +1,91 @@
+/* 城市榜页样式（与网站移动端卡片视觉对齐） */
+
+.ph { color: var(--text-3); }
+
+/* ---------- 城市卡片 ---------- */
+.city-list { display: flex; flex-direction: column; gap: 18rpx; margin-top: 6rpx; }
+
+.city-card {
+  background: var(--card);
+  border: 1rpx solid var(--border);
+  border-radius: 20rpx;
+  padding: 24rpx 24rpx 20rpx;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s;
+}
+
+.city-card.expanded {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.row-main { display: flex; align-items: center; gap: 18rpx; }
+
+.rank {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 32rpx;
+  color: var(--accent);
+  width: 56rpx;
+  flex-shrink: 0;
+}
+
+.city-cell { display: flex; align-items: center; gap: 16rpx; flex: 1; min-width: 0; }
+.city-flag { font-size: 44rpx; line-height: 1; flex-shrink: 0; }
+.city-names { min-width: 0; }
+.city-name { font-weight: 700; font-size: 30rpx; }
+.city-sub { display: flex; align-items: center; gap: 10rpx; margin-top: 2rpx; }
+.city-country { font-size: 22rpx; color: var(--text-3); }
+
+.city-right { text-align: right; flex-shrink: 0; }
+.score {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-weight: 700; font-size: 44rpx; line-height: 1;
+  color: var(--accent);
+}
+.score-label { font-size: 19rpx; color: var(--text-3); margin-top: 4rpx; }
+
+/* 第二行：游民数 + 月成本 */
+.row-meta { display: flex; gap: 24rpx; margin: 18rpx 0 12rpx; font-size: 24rpx; }
+.meta-item { color: var(--text-2); font-variant-numeric: tabular-nums; }
+.meta-item.cost-low { color: var(--good); font-weight: 600; }
+.meta-item.cost-mid { color: var(--mid); font-weight: 600; }
+.meta-item.cost-high { color: var(--bad); font-weight: 600; }
+
+/* 快速评分点 */
+.quick-dots { display: flex; align-items: center; gap: 20rpx; flex-wrap: wrap; }
+.qdot { display: flex; align-items: center; gap: 8rpx; }
+.qdot-label { font-size: 21rpx; color: var(--text-3); }
+.qdot-value { font-size: 22rpx; font-weight: 600; font-variant-numeric: tabular-nums; }
+.qdot-value.g { color: var(--good); }
+.qdot-value.m { color: var(--mid); }
+.qdot-value.b { color: var(--bad); }
+.qdot-more { margin-left: auto; font-size: 20rpx; color: var(--text-3); }
+
+/* ---------- 展开详情 ---------- */
+.detail { margin-top: 20rpx; border-top: 1rpx dashed var(--border-strong); padding-top: 20rpx; }
+
+.detail-meta { display: flex; flex-wrap: wrap; gap: 10rpx 28rpx; margin-bottom: 20rpx; }
+.dm { font-size: 22rpx; }
+.dm-l { color: var(--text-3); margin-right: 8rpx; }
+.dm-v { color: var(--text-2); font-weight: 500; }
+
+.dim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12rpx; }
+.metric {
+  background: var(--card);
+  border: 1rpx solid var(--border);
+  border-radius: 14rpx;
+  padding: 14rpx 16rpx;
+}
+.metric-head { display: flex; align-items: center; gap: 10rpx; }
+.metric-label { font-size: 22rpx; font-weight: 600; flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; }
+.metric-val { font-size: 26rpx; font-weight: 700; font-variant-numeric: tabular-nums; }
+.metric-val.g { color: var(--good); }
+.metric-val.m { color: var(--mid); }
+.metric-val.b { color: var(--bad); }
+.metric-tier { font-size: 19rpx; color: var(--text-3); }
+.metric-help {
+  font-size: 19rpx; color: var(--text-3); margin-top: 6rpx;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}

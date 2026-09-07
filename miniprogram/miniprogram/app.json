@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/communities/communities",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#faf9f5",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "牛马迁移指南",
+    "backgroundColor": "#faf9f5",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#98948a",
+    "selectedColor": "#c96442",
+    "backgroundColor": "#fffdf8",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "城市榜" },
+      { "pagePath": "pages/communities/communities", "text": "社区地图" },
+      { "pagePath": "pages/about/about", "text": "共建" }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

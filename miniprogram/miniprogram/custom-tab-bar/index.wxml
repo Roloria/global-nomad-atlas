@@ -1,0 +1,17 @@
+<view class="tabbar tabbar-{{theme}}">
+  <view
+    class="tab-item {{selected === index ? 'active' : ''}}"
+    wx:for="{{list}}"
+    wx:key="pagePath"
+    data-index="{{index}}"
+    data-path="{{item.pagePath}}"
+    bindtap="onTap"
+  >
+    <image
+      class="tab-icon"
+      src="/assets/icons/{{item.icon}}{{selected === index ? '-active' : ''}}{{theme === 'dark' ? '-dark' : ''}}.png"
+      mode="aspectFit"
+    />
+    <text class="tab-text">{{item.text}}</text>
+  </view>
+</view>

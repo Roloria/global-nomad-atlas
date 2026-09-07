@@ -1,0 +1,7 @@
+<!-- 自定义导航区：仅品牌 Logo + 加粗应用名（原生胶囊按钮仍在右上角） -->
+<view class="nav-header" style="padding-top: {{statusBarHeight}}px;">
+  <view class="nav-row">
+    <image class="nav-logo" src="/assets/icons/logo-badge.png" mode="aspectFit" />
+    <text class="nav-title">牛马迁移指南</text>
+  </view>
+</view>

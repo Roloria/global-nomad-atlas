@@ -1,0 +1,96 @@
+<view class="page {{theme}}">
+  <nav-header theme="{{theme}}" />
+  <view class="container">
+
+    <!-- 顶部标语（自城市榜移入） -->
+    <view class="hero">
+      <view class="kicker">GLOBAL NOMAD ATLAS · 游徙制图学</view>
+      <view class="hero-slogan">你的下一座城，不该靠<text class="em">运气</text>选。</view>
+      <view class="hero-sub">一份由全球数字游民亲手维护的开放城市数据库：80 座城市、12 个维度，评分公式公开，人人可编辑。</view>
+    </view>
+
+    <!-- 三大支柱 -->
+    <view class="section">
+      <view class="kicker">为什么不一样</view>
+      <view class="pillar" wx:for="{{pillars}}" wx:key="no">
+        <view class="pillar-no">{{item.no}}</view>
+        <view class="pillar-title">{{item.icon}} {{item.title}}</view>
+        <view class="pillar-text">{{item.text}}</view>
+      </view>
+    </view>
+
+    <!-- 评分方法论 -->
+    <view class="section">
+      <view class="kicker">评分方法论</view>
+      <view class="section-title">12 个维度加权合成综合分</view>
+      <view class="dim-list">
+        <view class="dim-item" wx:for="{{dims}}" wx:key="key">
+          <view class="dim-label">{{item.label}} <text class="dim-weight">权重 {{item.weight}}</text></view>
+          <view class="dim-help">{{item.help}}</view>
+        </view>
+      </view>
+      <view class="formula">
+        <view class="formula-title">🎯 综合分计算公式（人人可复算）</view>
+        <view class="formula-body">{{formula}}</view>
+      </view>
+    </view>
+
+    <!-- 共建流水线 -->
+    <view class="section">
+      <view class="kicker">共建机制</view>
+      <view class="section-title">你随手改的一行数据，会走完这样一段旅程。</view>
+      <view class="step" wx:for="{{steps}}" wx:key="no">
+        <view class="step-no">{{item.no}}</view>
+        <view class="step-title">{{item.title}}</view>
+        <view class="step-text">{{item.text}}</view>
+      </view>
+      <view class="pipeline">{{pipeline}}</view>
+    </view>
+
+    <!-- FAQ -->
+    <view class="section">
+      <view class="kicker">FAQ</view>
+      <view class="section-title">常见问题</view>
+      <view class="faq-item" wx:for="{{faq}}" wx:key="q">
+        <view class="faq-q" data-i="{{index}}" bindtap="onFaqTap">
+          <text class="faq-qno">Q{{index + 1}}</text>
+          <text class="faq-qtext">{{item.q}}</text>
+          <text class="faq-plus {{faqOpen === index ? 'open' : ''}}">+</text>
+        </view>
+        <view class="faq-a" wx:if="{{faqOpen === index}}">{{item.a}}</view>
+      </view>
+    </view>
+
+    <!-- 行动区 -->
+    <view class="section">
+      <view class="kicker">现在开始</view>
+      <view class="section-title">三种方式，让数据里有你的一笔。</view>
+      <view class="cta-list">
+        <!-- 审核期间暂时下线小程序内提交入口（页面与代码保留，恢复时取消注释并在 app.json 重新注册 pages/submit/submit）
+        <view class="btn btn-block" bindtap="onGoSubmit">📝 提交城市评分 / 社区体验</view>
+        -->
+        <view class="btn btn-secondary btn-block" data-key="sheet" bindtap="onCopyLink">📋 复制腾讯文档共建表链接</view>
+        <view class="btn btn-secondary btn-block" data-key="repo" bindtap="onCopyLink">📋 复制 GitHub 仓库链接</view>
+        <view class="btn btn-secondary btn-block" data-key="site" bindtap="onCopyLink">📋 复制榜单网站链接</view>
+      </view>
+      <view class="flow-note">🛡️ 担心恶意编辑？三重保险：腾讯文档历史版本回滚 · PR 人工审核 · CI 自动校验。</view>
+    </view>
+
+    <!-- 外观设置 -->
+    <view class="section">
+      <view class="kicker">外观</view>
+      <view class="theme-row">
+        <text class="theme-label">🌙 深色模式</text>
+        <switch checked="{{theme === 'dark'}}" bindchange="onThemeSwitch" color="#c96442" />
+      </view>
+    </view>
+
+    <!-- 页脚 -->
+    <view class="about-foot">
+      <view class="about-foot-brand">✦ 牛马迁移指南 · Global Nomad Atlas</view>
+      <view class="about-foot-text">一份由全球数字游民共同维护的开放城市数据库：社区共建、数据透明、开源可追溯。</view>
+      <view class="about-foot-meta">DATA: {{dims.length}} DIMENSIONS × 80 CITIES · UPDATED BY COMMUNITY</view>
+    </view>
+
+  </view>
+</view>
